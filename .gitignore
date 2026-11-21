@@ -3,8 +3,9 @@ dist/
 .env
 .env.*
 !.env.example
-functions/.env*
-!.env.example
+functions/.env
+functions/.env.*
+!functions/.env.example
 firebase-debug.log
 firestore-debug.log
 ui-debug.log

@@ -1,5 +1,4 @@
 import {
-  createUserWithEmailAndPassword,
   getIdToken,
   getIdTokenResult,
   onAuthStateChanged,
@@ -15,6 +14,7 @@ import {
   onSnapshot,
   serverTimestamp,
   setDoc,
+  writeBatch,
 } from "firebase/firestore";
 import { httpsCallable } from "firebase/functions";
 import { auth, db, functions, isFirebaseConfigured } from "./firebase-client.js";
@@ -140,7 +140,7 @@ async function seedLegacyCatalog() {
   }
 
   for (let offset = 0; offset < records.length; offset += 400) {
-    const batch = (await import("firebase/firestore")).writeBatch(db);
+    const batch = writeBatch(db);
     records.slice(offset, offset + 400).forEach(({ id, ...product }) => {
       batch.set(doc(db, "products", id), {
         ...product,
@@ -406,12 +406,9 @@ if (!isFirebaseConfigured) {
     setMessage(loginMessage, "Checking administrator access...");
 
     try {
-      let token = await getIdTokenResult(user);
-      if (token.claims.admin !== true) {
-        await httpsCallable(functions, "bootstrapAdmin")();
-        await getIdToken(user, true);
-        token = await getIdTokenResult(user);
-      }
+      await httpsCallable(functions, "bootstrapAdmin")();
+      await getIdToken(user, true);
+      const token = await getIdTokenResult(user);
       if (token.claims.admin !== true) throw new Error("Administrator access was not granted to this account.");
 
       showDashboard();

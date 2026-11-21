@@ -75,7 +75,12 @@ if (isFirebaseConfigured) {
   onSnapshot(
     query(collection(db, "products"), where("active", "==", true)),
     (snapshot) => {
-      if (snapshot.empty) return;
+      if (snapshot.empty) {
+        sections.forEach((grid) => {
+          if (grid?.classList.contains("grid")) grid.replaceChildren();
+        });
+        return;
+      }
       const grouped = new Map();
       snapshot.forEach((productDoc) => {
         const product = { id: productDoc.id, ...productDoc.data() };

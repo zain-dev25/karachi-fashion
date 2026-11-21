@@ -12,12 +12,16 @@ export const bootstrapAdmin = onCall(async (request) => {
     throw new HttpsError("unauthenticated", "Sign in before requesting admin access.");
   }
 
+  const user = await getAuth().getUser(request.auth.uid);
   const signedInEmail = request.auth.token.email?.toLowerCase();
   if (!signedInEmail || signedInEmail !== adminEmail.value().trim().toLowerCase()) {
+    if (user.customClaims?.admin === true) {
+      const { admin: _admin, ...remainingClaims } = user.customClaims;
+      await getAuth().setCustomUserClaims(request.auth.uid, remainingClaims);
+    }
     throw new HttpsError("permission-denied", "This account is not the configured store administrator.");
   }
 
-  const user = await getAuth().getUser(request.auth.uid);
   await getAuth().setCustomUserClaims(request.auth.uid, {
     ...user.customClaims,
     admin: true,
