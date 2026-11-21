@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KARACHI FASHION | Premium Watches, Cord-Set, Kurti & Suits</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOm2d2PznVFGrdxb9K26U4GP8b12z-oSPmQmYxc7ohcA&s=10" type="image/x-icon">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{background:#0f0f0f;color:#fff}
@@ -15,6 +16,10 @@ a{text-decoration:none}
 .logo span{color:#FFD700}
 .logo small{display:block;font-family:'Poppins';font-size:9px;letter-spacing:4px;color:#aaa;font-weight:400}
 .hbtn{background:#FFD700;color:#000;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.header-actions{display:flex;align-items:center;gap:8px}
+.admin-link{width:36px;height:36px;display:grid;place-items:center;border:1px solid #5b512a;border-radius:50%;color:#FFD700}
+.admin-link svg{width:17px;height:17px}
+.admin-link:focus-visible,.hbtn:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .hero{padding:28px 18px 20px;text-align:center;background:radial-gradient(circle at 50% 0%, #2a2200 0%, #0f0f0f 65%)}
 .hero h1{font-family:'Playfair Display',serif;font-size:34px;line-height:1.1}
 .hero h1 i{color:#FFD700;font-style:normal}
@@ -25,7 +30,7 @@ a{text-decoration:none}
 .stat span{font-size:11px;color:#aaa;display:block}
 .tiktok-bar{margin:16px;background:#000;border:1px solid #333;border-radius:16px;padding:12px;display:flex;align-items:center;gap:10px}
 .tiktok-bar img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #FFD700}
-.tiktok-bar div{flex:1;text-align:left}
+.tiktok-bar div{flex:1;min-width:0;overflow:hidden;text-align:left}
 .tiktok-bar b{font-size:14px}
 .tiktok-bar span{font-size:11px;color:#aaa}
 .follow{background:#fff;color:#000;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:700}
@@ -72,7 +77,7 @@ a{text-decoration:none}
 </head>
 <body>
 <div class="top">✨ FREE DELIVERY KARACHI MEIN | CASH ON DELIVERY ALL OVER PAKISTAN ✨</div>
-<div class="header"><div class="logo">KARACHI <span>FASHION</span><small>PREMIUM COLLECTION</small></div><a class="hbtn" href="https://www.tiktok.com/@karachi.fashion09">🎵 Follow</a></div>
+<div class="header"><div class="logo">KARACHI <span>FASHION</span><small>PREMIUM COLLECTION</small></div><div class="header-actions"><a class="admin-link" href="/admin.html" aria-label="Admin login" title="Admin login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></a><a class="hbtn" href="https://www.tiktok.com/@karachi.fashion09">🎵 Follow</a></div></div>
 
 <div class="hero">
 <h1>Luxury Fashion,<br><i>Ab Karachi Mein.</i></h1>
@@ -134,5 +139,11 @@ a{text-decoration:none}
 <div style="height:70px"></div>
 <a class="float" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe order karna hai.">💬 WhatsApp Par Order Karo</a>
 <script type="module" src="/src/storefront.js"></script>
+<style>
+@media (max-width: 380px){.logo{font-size:19px}.logo small{font-size:8px;letter-spacing:3px}.header{padding-inline:11px}.header-actions{gap:6px}.hbtn{padding:8px 10px}}
+@media (min-width: 700px){.hero{padding:44px 24px 30px}.hero h1{font-size:44px}.hero p{font-size:15px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-inline:24px}.sec{padding-inline:24px}.full{grid-column:span 2}.card img{height:270px}.full img{height:320px}.tiktok-bar,.banner{max-width:900px;margin-inline:auto}.cat{justify-content:center}.trust{max-width:900px;margin:auto}}
+@media (min-width: 1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-inline:max(24px,calc((100vw - 1200px)/2))}.sec{max-width:1200px;margin-inline:auto}.full{grid-column:span 2}.card img{height:300px}.full img{height:340px}.hero h1{font-size:50px}}
+@media (max-width: 380px){.grid{gap:8px;padding-inline:10px}.card img{height:170px}.info{padding:9px}.info h3{font-size:12px}.new{font-size:14px}.sec{padding-inline:10px}.sec h2{font-size:20px}}
+</style>
 </body>
 </html>

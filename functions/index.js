@@ -7,7 +7,7 @@ initializeApp();
 
 const adminEmail = defineString("ADMIN_EMAIL");
 
-export const bootstrapAdmin = onCall(async (request) => {
+export const bootstrapAdmin = onCall({ cors: true }, async (request) => {
   if (!request.auth) {
     throw new HttpsError("unauthenticated", "Sign in before requesting admin access.");
   }

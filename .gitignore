@@ -6,6 +6,7 @@ dist/
 functions/.env
 functions/.env.*
 !functions/.env.example
+firestore.rules.generated
 firebase-debug.log
 firestore-debug.log
 ui-debug.log

@@ -15,7 +15,7 @@
 
 * { box-sizing: border-box; }
 body {
-  min-width: 320px;
+  min-width: 0;
   min-height: 100vh;
   margin: 0;
   background: radial-gradient(ellipse at 82% 0%, #302716 0, #10100e 38rem), #10100e;
@@ -67,6 +67,8 @@ input[type="checkbox"] { width: 16px; min-height: 16px; accent-color: var(--gold
 .button-primary { background: var(--gold); color: #17150f; }
 .button-primary:hover { background: #ffda68; }
 .button-primary:disabled { cursor: wait; opacity: .65; }
+.login-button { display: flex; align-items: center; justify-content: center; gap: 9px; }
+.login-button svg { width: 16px; height: 16px; }
 .button-quiet { border-color: #51472e; background: transparent; color: var(--gold); }
 .page-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 .page-heading h1 { font-size: 36px; }
@@ -138,4 +140,14 @@ input[type="checkbox"] { width: 16px; min-height: 16px; accent-color: var(--gold
   .product-thumb { width: 44px; height: 44px; }
   .row-actions { gap: 3px; }
   .icon-button { min-width: 30px; }
+}
+@media (max-width: 360px) {
+  .field-grid { grid-template-columns: 1fr; }
+  .login-view { padding-inline: 16px; }
+  .catalog-heading { align-items: stretch; flex-direction: column; }
+  .search-box { width: 100%; }
+  .summary-item span { font-size: 10px; }
+  .product-row { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 6px; }
+  .product-thumb { width: 40px; height: 40px; }
+  .icon-button { min-width: 28px; padding-inline: 4px; font-size: 10px; }
 }

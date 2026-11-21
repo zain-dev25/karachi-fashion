@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadEnv } from "vite";
@@ -15,11 +15,20 @@ if (!adminEmail || !adminEmail.includes("@")) {
   throw new Error("Set VITE_ADMIN_EMAIL in the root .env file before deploying.");
 }
 
-const functionsDirectory = resolve(root, "functions");
-await mkdir(functionsDirectory, { recursive: true });
-await writeFile(resolve(functionsDirectory, `.env.${projectId}`), `ADMIN_EMAIL=${JSON.stringify(adminEmail)}\n`);
+const rulesTemplate = await readFile(resolve(root, "firestore.rules"), "utf8");
+if (!rulesTemplate.includes("'__ADMIN_EMAIL__'")) {
+  throw new Error("Admin email placeholder is missing from firestore.rules.");
+}
+const escapedAdminEmail = adminEmail.replaceAll("\\", "\\\\").replaceAll("'", "\\'");
+const generatedRules = rulesTemplate.replaceAll("__ADMIN_EMAIL__", escapedAdminEmail);
+await writeFile(resolve(root, "firestore.rules.generated"), generatedRules);
 
-const result = spawnSync("npx", ["--yes", "firebase-tools", "deploy", "--project", projectId], {
+if (process.argv.includes("--dry-run")) {
+  console.log(`Generated Firestore Rules for ${projectId}; no deployment was started.`);
+  process.exit(0);
+}
+
+const result = spawnSync("npx", ["--yes", "firebase-tools", "deploy", "--only", "hosting,firestore:rules", "--project", projectId], {
   cwd: root,
   stdio: "inherit",
 });

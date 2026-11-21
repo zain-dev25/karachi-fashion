@@ -1,6 +1,4 @@
 import {
-  getIdToken,
-  getIdTokenResult,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
@@ -16,8 +14,7 @@ import {
   setDoc,
   writeBatch,
 } from "firebase/firestore";
-import { httpsCallable } from "firebase/functions";
-import { auth, db, functions, isFirebaseConfigured } from "./firebase-client.js";
+import { auth, db, isFirebaseConfigured } from "./firebase-client.js";
 
 const byId = (id) => document.getElementById(id);
 const loginView = byId("login-view");
@@ -29,6 +26,7 @@ const formMessage = byId("form-message");
 const productList = byId("product-list");
 const searchInput = byId("product-search");
 const categories = ["watch", "cord", "kurti", "cosmetic", "suits"];
+const adminEmail = (import.meta.env.VITE_ADMIN_EMAIL || "").trim().toLowerCase();
 
 let products = [];
 let productSubscription = null;
@@ -63,10 +61,21 @@ function showDashboard() {
 
 function explainError(error) {
   const code = error?.code || "";
-  if (code.includes("invalid-credential")) return "Email or password is incorrect.";
-  if (code.includes("permission-denied")) return "This account is not authorized as the store admin.";
-  if (code.includes("functions/not-found") || code.includes("unavailable")) {
-    return "Admin setup is not deployed yet. Follow the Firebase setup steps in README.md.";
+  const friendlyMessages = {
+    "auth/invalid-credential": "Email or password is incorrect.",
+    "auth/invalid-email": "Enter a valid email address.",
+    "auth/user-disabled": "This admin account has been disabled. Contact the project owner.",
+    "auth/user-not-found": "No admin account exists for this email.",
+    "auth/wrong-password": "Email or password is incorrect.",
+    "auth/too-many-requests": "Too many sign-in attempts. Wait a few minutes and try again.",
+    "auth/network-request-failed": "Could not reach Firebase Authentication. Check your connection and try again.",
+  };
+  if (friendlyMessages[code]) return friendlyMessages[code];
+  if (code === "permission-denied") {
+    return "Firebase denied access. Deploy the current Firestore Rules and make sure VITE_ADMIN_EMAIL matches this account.";
+  }
+  if (code.startsWith("auth/") || code.startsWith("functions/")) {
+    return "Sign-in could not be completed. Check your details and Firebase setup, then try again.";
   }
   return error?.message || "Something went wrong. Please try again.";
 }
@@ -403,22 +412,25 @@ if (!isFirebaseConfigured) {
     }
     if (currentUid === user.uid) return;
     currentUid = user.uid;
-    setMessage(loginMessage, "Checking administrator access...");
+    if (!adminEmail) {
+      currentUid = null;
+      await signOut(auth);
+      showLogin("Admin email is not configured. Add VITE_ADMIN_EMAIL to .env and restart the app.");
+      return;
+    }
+    if (user.email?.trim().toLowerCase() !== adminEmail) {
+      currentUid = null;
+      await signOut(auth);
+      showLogin("This email is not authorized for the store admin dashboard.");
+      return;
+    }
 
+    showDashboard();
     try {
-      await httpsCallable(functions, "bootstrapAdmin")();
-      await getIdToken(user, true);
-      const token = await getIdTokenResult(user);
-      if (token.claims.admin !== true) throw new Error("Administrator access was not granted to this account.");
-
-      showDashboard();
       await seedLegacyCatalog();
       subscribeToProducts();
     } catch (error) {
-      const message = explainError(error);
-      currentUid = null;
-      await signOut(auth);
-      showLogin(message);
+      byId("catalog-status").textContent = explainError(error);
     }
   });
 }
