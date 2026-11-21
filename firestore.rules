@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    function validProduct(data) {
+      return data.keys().hasAll([
+          'title', 'category', 'label', 'badge', 'description', 'price',
+          'compareAtPrice', 'imageUrl', 'featured', 'active', 'sortOrder',
+          'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'title', 'category', 'label', 'badge', 'description', 'price',
+          'compareAtPrice', 'imageUrl', 'featured', 'active', 'sortOrder',
+          'createdAt', 'updatedAt'
+        ])
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 160
+        && data.category in ['watch', 'cord', 'kurti', 'cosmetic', 'suits']
+        && data.label is string && data.label.size() <= 80
+        && data.badge is string && data.badge.size() <= 40
+        && data.description is string && data.description.size() <= 500
+        && data.price is number && data.price >= 0
+        && data.compareAtPrice is number && data.compareAtPrice >= 0
+        && data.imageUrl is string && data.imageUrl.size() <= 2048
+        && data.featured is bool
+        && data.active is bool
+        && data.sortOrder is int && data.sortOrder >= 0
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /products/{productId} {
+      allow read: if isAdmin() || resource.data.active == true;
+      allow create: if isAdmin() && validProduct(request.resource.data);
+      allow update: if isAdmin() && validProduct(request.resource.data);
+      allow delete: if isAdmin();
+    }
+  }
+}

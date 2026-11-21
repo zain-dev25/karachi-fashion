@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KARACHI FASHION | Premium Watches, Cord-Set, Kurti & Suits</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0f0f0f;color:#fff}
+a{text-decoration:none}
+.top{ background:linear-gradient(90deg,#FFD700,#FFA500,#FFD700);color:#000;text-align:center;padding:8px;font-size:12px;font-weight:700;letter-spacing:1px}
+.header{position:sticky;top:0;z-index:100;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);padding:14px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333}
+.logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;letter-spacing:1px}
+.logo span{color:#FFD700}
+.logo small{display:block;font-family:'Poppins';font-size:9px;letter-spacing:4px;color:#aaa;font-weight:400}
+.hbtn{background:#FFD700;color:#000;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.hero{padding:28px 18px 20px;text-align:center;background:radial-gradient(circle at 50% 0%, #2a2200 0%, #0f0f0f 65%)}
+.hero h1{font-family:'Playfair Display',serif;font-size:34px;line-height:1.1}
+.hero h1 i{color:#FFD700;font-style:normal}
+.hero p{color:#bbb;font-size:13px;margin:10px 0 16px;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;gap:10px}
+.stat{background:#1a1a1a;border:1px solid #2a2a2a;padding:10px 12px;border-radius:14px;flex:1}
+.stat b{color:#FFD700;font-size:16px}
+.stat span{font-size:11px;color:#aaa;display:block}
+.tiktok-bar{margin:16px;background:#000;border:1px solid #333;border-radius:16px;padding:12px;display:flex;align-items:center;gap:10px}
+.tiktok-bar img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #FFD700}
+.tiktok-bar div{flex:1;text-align:left}
+.tiktok-bar b{font-size:14px}
+.tiktok-bar span{font-size:11px;color:#aaa}
+.follow{background:#fff;color:#000;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.cat{padding:5px 15px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.cat a{white-space:nowrap;background:#1c1c1c;border:1px solid #2e2e2e;color:#ddd;padding:9px 16px;border-radius:20px;font-size:12px;font-weight:600}
+.cat a.active{background:#FFD700;color:#000;border-color:#FFD700}
+.sec{padding:20px 15px 5px;display:flex;justify-content:space-between;align-items:end}
+.sec h2{font-family:'Playfair Display',serif;font-size:22px}
+.sec h2 span{color:#FFD700}
+.sec p{font-size:11px;color:#999}
+.sec a{font-size:12px;color:#FFD700;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 15px}
+.card{background:#171717;border:1px solid #262626;border-radius:18px;overflow:hidden;position:relative}
+.card img{width:100%;height:220px;object-fit:cover;display:block}
+.off{position:absolute;top:10px;left:10px;background:#FF3D00;color:#fff;font-size:10px;font-weight:700;padding:5px 8px;border-radius:20px}
+.heart{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.info{padding:11px}
+.info small{font-size:10px;letter-spacing:1px;color:#FFD700;font-weight:700}
+.info h3{font-size:13px;line-height:1.4;margin:5px 0;height:36px;overflow:hidden;font-weight:600}
+.stars{color:#FFD700;font-size:11px}
+.prices{margin:7px 0;display:flex;align-items:center;gap:6px}
+.new{color:#FFD700;font-weight:800;font-size:16px}
+.old2{color:#777;text-decoration:line-through;font-size:12px}
+.btns{display:flex;gap:6px}
+.wa{flex:1;background:#25D366;color:#fff;text-align:center;padding:9px;border-radius:10px;font-size:12px;font-weight:700}
+.tt{width:38px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:16px}
+.full{grid-column:span 2}
+.full img{height:280px}
+.banner{margin:18px 15px;background:linear-gradient(135deg,#FFD700,#FF6A00);border-radius:20px;padding:20px;color:#000;text-align:center}
+.banner h3{font-family:'Playfair Display',serif;font-size:22px}
+.banner p{font-size:12px;margin:6px 0 12px}
+.banner a{background:#000;color:#fff;padding:10px 20px;border-radius:25px;font-size:13px;font-weight:700;display:inline-block}
+.trust{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 15px}
+.tbox{background:#1a1a1a;border-radius:14px;padding:12px;text-align:center}
+.tbox b{font-size:18px}
+.tbox p{font-size:11px;color:#aaa;margin-top:4px}
+.footer{margin-top:20px;background:#000;padding:22px 15px;text-align:center;border-top:1px solid #222}
+.footer h4{font-family:'Playfair Display',serif;font-size:22px}
+.footer h4 span{color:#FFD700}
+.footer p{font-size:12px;color:#aaa;line-height:1.7;margin:8px 0}
+.footer a{color:#FFD700;font-weight:700}
+.float{position:fixed;bottom:16px;left:15px;right:15px;background:#25D366;color:#fff;padding:14px;border-radius:30px;text-align:center;font-weight:700;font-size:15px;box-shadow:0 10px 25px rgba(37,211,102,0.4);z-index:99}
+</style>
+</head>
+<body>
+<div class="top">✨ FREE DELIVERY KARACHI MEIN | CASH ON DELIVERY ALL OVER PAKISTAN ✨</div>
+<div class="header"><div class="logo">KARACHI <span>FASHION</span><small>PREMIUM COLLECTION</small></div><a class="hbtn" href="https://www.tiktok.com/@karachi.fashion09">🎵 Follow</a></div>
+
+<div class="hero">
+<h1>Luxury Fashion,<br><i>Ab Karachi Mein.</i></h1>
+<p>Watches Rs 2,500 | Cord-Set Rs 2,500 | Kurti Rs 2,500 | Suits Rs 3,500<br>100% Original • Premium Quality • Cash On Delivery</p>
+<div class="hero-stats"><div class="stat"><b>500+</b><span>Happy Customers</span></div><div class="stat"><b>4.9 ★</b><span>Customer Rating</span></div><div class="stat"><b>COD</b><span>All Pakistan</span></div></div>
+</div>
+
+<div class="tiktok-bar"><img src="watch1.jpg"><div><b>@karachi.fashion09</b><span>TikTok Par 100+ Videos • Follow Karo</span></div><a class="follow" href="https://www.tiktok.com/@karachi.fashion09">Follow</a></div>
+
+<div class="cat"><a class="active" href="#watch">⌚ Watches</a><a href="#cord">✨ Cord-Set</a><a href="#kurti">👗 Kurti</a><a href="#suits">👘 Suits</a><a href="#cosmetic">💄 Cosmetics</a></div>
+
+<!-- WATCHES -->
+<div class="sec" id="watch"><div><h2>Premium <span>Watches</span></h2><p>Cosmo Collection • With Premium Box</p></div><a href="https://wa.me/923312044080">View All →</a></div>
+<div class="grid">
+<div class="card"><span class="off">-11% OFF</span><span class="heart">♡</span><img src="watch5.jpg"><div class="info"><small>CLEAN & ELEGANT • WHITE</small><h3>Cosmo Premium - White Dial Full Silver Chain Watch</h3><div class="stars">★★★★★ (128)</div><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 2,800</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe Cosmo WHITE DIAL wali Watch (Rs 2500 With Box) order karni hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">-11% OFF</span><span class="heart">♡</span><img src="watch4.jpg"><div class="info"><small>ROYAL LOOK • TWO-TONE BLACK</small><h3>Cosmo Premium - Black Dial Gold + Silver Chain Watch</h3><div class="stars">★★★★★ (96)</div><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 2,800</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe Cosmo TWO-TONE BLACK wali Watch (Rs 2500) order karni hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">BEST SELLER</span><span class="heart">♡</span><img src="watch2.jpg"><div class="info"><small>BEST SELLER • TWO-TONE BLUE</small><h3>Cosmo Premium - Two-Tone Blue Dial Watch Gold + Silver</h3><div class="stars">★★★★★ (210)</div><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 2,800</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe Cosmo TWO-TONE BLUE wali Watch (Rs 2500) order karni hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">FRESH</span><span class="heart">♡</span><img src="watch3.jpg"><div class="info"><small>FRESH & COOL • SKY BLUE</small><h3>Cosmo Premium - Sky Blue Dial Full Silver Chain Watch</h3><div class="stars">★★★★★ (84)</div><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 2,800</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe Cosmo SKY BLUE wali Watch (Rs 2500) order karni hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card full"><span class="off">5 COLORS AVAILABLE</span><img src="watch1.jpg"><div class="info"><small>PREMIUM COLLECTION • 5 COLORS</small><h3>Cosmo Premium Collection Watch - Gents Quartz - 5 Colors - Waterproof With Box</h3><div class="stars">★★★★★ (340) • Premium Stainless Steel</div><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 2,800</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe Cosmo Premium Collection Watch (Rs 2500 With Box) order karni hai.">Order Now - All 5 Colors</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+</div>
+
+<div class="banner"><h3>NEW ARRIVAL 🔥</h3><p>Western Digital Print Cord-Set - Crush Georgette - Sirf Rs 2,500</p><a href="#cord">Shop Now →</a></div>
+
+<!-- CORD SET -->
+<div class="sec" id="cord"><div><h2>Western <span>Cord-Set</span></h2><p>Crush Georgette • 100% Overlocked</p></div></div>
+<div class="grid"><div class="card full"><span class="off">NEW • Rs 2,500</span><img src="cord2.jpg"><div class="info"><small>NEW ARRIVAL • CRUSH GEORGETTE</small><h3>Western Digital Print Cord-Set - 2 Piece - Shirt + Flyper</h3><p style="font-size:12px;color:#aaa;line-height:1.6;margin:6px 0">✔ Shirt: Crush Georgette • Flyper: Crape Georgette<br>✔ Chest 21/22 • Shirt 31 • Flyper 39 • 100% Overlocked<br>✔ Real Video Available On WhatsApp</p><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,000</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe Western Digital Print Cord-Set (Rs 2500) order karna hai. Real video bhej dein.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div></div>
+
+<!-- KURTI -->
+<div class="sec" id="kurti"><div><h2>Printed <span>Kurti / Co-ord</span></h2><p>2-Piece • Rs 2,500 Flat</p></div></div>
+<div class="grid">
+<div class="card"><span class="off">PCS-42</span><img src="kurti6.jpg"><div class="info"><small>PCS-42 • NAVY FLORAL</small><h3>Co-ord Set PCS-42 White Navy Blue Floral + Navy Trouser</h3><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe PCS-42 wala Co-ord Set (Rs 2500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">PCS-46</span><img src="kurti46.jpg"><div class="info"><small>PCS-46 • PINK ROSE</small><h3>Co-ord Set PCS-46 Pink Rose + Pink Trouser</h3><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe PCS-46 wala Co-ord Set (Rs 2500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">PCS-45</span><img src="kurti5.jpg"><div class="info"><small>PCS-45 • BLACK YELLOW</small><h3>Co-ord Set PCS-45 Black Yellow Floral + Black Trouser</h3><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe PCS-45 wala Co-ord Set (Rs 2500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">CUTE</span><img src="kurti4.jpg"><div class="info"><small>WHITE PINK FLORAL</small><h3>Co-ord Set White Pink Floral + Pink Trouser</h3><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe WHITE PINK FLORAL wala Co-ord Set (Rs 2500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">MOST DEMANDED</span><img src="kurti3.jpg"><div class="info"><small>YELLOW SUNFLOWER</small><h3>Co-ord Set Yellow Sunflower + Black Trouser</h3><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe YELLOW SUNFLOWER wala Co-ord Set (Rs 2500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">NEW</span><img src="kurti2.jpg"><div class="info"><small>5 NEW PRINTS</small><h3>Printed Kurti 2-Piece - 5 New Prints - Shirt + Trouser</h3><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe KURTI 2-Piece (Rs 2500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card full"><img src="kurti1.jpg"><div class="info"><small>FULL COLLECTION • 10+ DESIGNS</small><h3>Printed Kurti 2-Piece Full Shop Collection - Screenshot Bhej Kar Order Karo</h3><div class="prices"><span class="new">Rs 2,500</span><span class="old2">Rs 3,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe Kurti Collection wali photo me se order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+</div>
+
+<!-- COSMETIC -->
+<div class="sec" id="cosmetic"><div><h2>Cosmetic <span>Deals</span></h2><p>M.A Traders • Hot Deal</p></div></div>
+<div class="grid"><div class="card full"><span class="off">HOT DEAL -32%</span><img src="cosmetic1.jpg"><div class="info"><small>SHEGLAN • PACK OF 12</small><h3>SHEGLAN Pack Of 12 Matte Lip Glosses - Long Lasting & Waterproof</h3><div class="prices"><span class="new">Rs 1,700</span><span class="old2">Rs 2,500</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe SHEGLAN Pack of 12 Matte Lip Gloss (Rs 1700) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div></div>
+
+<!-- SUITS -->
+<div class="sec" id="suits"><div><h2>Embroidered <span>Lawn Suits</span></h2><p>Premium • Rs 3,500 Only</p></div></div>
+<div class="grid">
+<div class="card"><span class="off">PRE-BOOKING</span><img src="suit1.jpg"><div class="info"><small>OLIVE GREEN</small><h3>Embroidered Lawn - Olive Green - Chikankari Daman</h3><div class="prices"><span class="new">Rs 3,500</span><span class="old2">Rs 4,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe GREEN wala suit (Rs 3500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">NEW</span><img src="suit2.jpg"><div class="info"><small>MAROON + SKY BLUE</small><h3>Embroidered Lawn - Maroon With Sky Blue Dupatta</h3><div class="prices"><span class="new">Rs 3,500</span><span class="old2">Rs 4,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe MAROON wala suit (Rs 3500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">BEST SELLER</span><img src="suit3.jpg"><div class="info"><small>BLACK & RED FLORAL</small><h3>Embroidered Lawn - Black & Red Floral - Sequence Work</h3><div class="prices"><span class="new">Rs 3,500</span><span class="old2">Rs 4,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe BLACK-RED wala suit (Rs 3500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">CLASSY</span><img src="suit4.jpg"><div class="info"><small>WHITE & PURPLE</small><h3>Embroidered Lawn - White & Purple Floral - Pearl Work</h3><div class="prices"><span class="new">Rs 3,500</span><span class="old2">Rs 4,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe WHITE-PURPLE wala suit (Rs 3500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">SHAADI SPECIAL</span><img src="suit5.jpg"><div class="info"><small>RED & PINK</small><h3>Embroidered Lawn - Red & Pink Floral - Heavy Neck</h3><div class="prices"><span class="new">Rs 3,500</span><span class="old2">Rs 4,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe RED-PINK wala suit (Rs 3500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card"><span class="off">TRENDY</span><img src="suit6.jpg"><div class="info"><small>BABY PINK</small><h3>Embroidered Lawn - Baby Pink With Black Dupatta</h3><div class="prices"><span class="new">Rs 3,500</span><span class="old2">Rs 4,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe PINK-BLACK wala suit (Rs 3500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+<div class="card full"><span class="off">PREMIUM DESIGNER</span><img src="suit7.jpg"><div class="info"><small>BLACK FLORAL • PREMIUM</small><h3>Embroidered Lawn - Black With Pink & Yellow Floral - Pearl & Sequence</h3><div class="prices"><span class="new">Rs 3,500</span><span class="old2">Rs 4,200</span></div><div class="btns"><a class="wa" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe BLACK FLORAL wala Premium suit (Rs 3500) order karna hai.">Order Now</a><a class="tt" href="https://www.tiktok.com/@karachi.fashion09">🎵</a></div></div></div>
+</div>
+
+<div class="trust"><div class="tbox"><b>🚚</b><p>Fast Delivery<br>All Pakistan</p></div><div class="tbox"><b>💯</b><p>Original Quality<br>Check Kar Ke Lo</p></div><div class="tbox"><b>💵</b><p>Cash On Delivery<br>No Advance</p></div></div>
+
+<div class="footer"><h4>KARACHI <span>FASHION</span></h4><p>M.A Traders Cosmetic & Deals<br>WhatsApp: 0331-2044080<br>TikTok: <a href="https://www.tiktok.com/@karachi.fashion09">@karachi.fashion09</a><br>Cash On Delivery All Over Pakistan</p><p style="font-size:10px;color:#666">© 2026 Karachi Fashion. All Rights Reserved.</p></div>
+<div style="height:70px"></div>
+<a class="float" href="https://wa.me/923312044080?text=Assalam-o-Alaikum! Mujhe order karna hai.">💬 WhatsApp Par Order Karo</a>
+<script type="module" src="/src/storefront.js"></script>
+</body>
+</html>
